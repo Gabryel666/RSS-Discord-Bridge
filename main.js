@@ -25,7 +25,7 @@ function saveLastPost(feedName, postLink) {
 
 // Formatage Discord (identique à l'original)
 function formatDiscordPost(feedName, item) {
-  return `\u200b\n🔔 **${feedName}**\n# [${item.title}](${item.link})`;
+  return `\u200b\n🔔 **${feedName}**\n## [${item.title}](${item.link})`;
 }
 
 async function checkFeeds() {
