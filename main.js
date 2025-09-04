@@ -35,16 +35,56 @@ async function checkFeeds() {
   for (const [name, config] of Object.entries(feeds)) {
     try {
       const feed = await parser.parseURL(config.url);
-      const lastItem = feed.items[0];
       
-      if (!lastItem?.link) continue;
-
-      if (lastPosts[name] !== lastItem.link) {
-        const hook = new Webhook(webhooks[config.webhookKey]); // Utilise le webhook spécifique
-        await hook.send(formatDiscordPost(name, lastItem));
-        saveLastPost(name, lastItem.link);
-        await new Promise(resolve => setTimeout(resolve, 800)); // Pause anti-rate limit
+      // Skip if feed is empty or has no items
+      if (!feed.items || feed.items.length === 0) {
+        console.log(`[INFO] Flux "${name}" est vide ou inaccessible.`);
+        continue;
       }
+
+      const lastPostedLink = lastPosts[name];
+      const newestItem = feed.items[0];
+
+      // If no new post, skip to the next feed
+      if (lastPostedLink === newestItem.link) {
+        continue;
+      }
+
+      let itemsToPost;
+
+      // If we've never posted from this feed, post only the latest one to avoid spam
+      if (!lastPostedLink) {
+        itemsToPost = [newestItem];
+      } else {
+        const lastPostedIndex = feed.items.findIndex(item => item.link === lastPostedLink);
+
+        if (lastPostedIndex === -1) {
+          // The last post is no longer in the feed, maybe it's too old.
+          // To be safe, just post the newest one.
+          itemsToPost = [newestItem];
+        } else {
+          // Get all items newer than the last one posted.
+          itemsToPost = feed.items.slice(0, lastPostedIndex);
+        }
+      }
+
+      // Post items from oldest to newest
+      for (const item of itemsToPost.reverse()) {
+        if (!item?.link) continue;
+
+        const hook = new Webhook(webhooks[config.webhookKey]);
+        await hook.send(formatDiscordPost(name, item));
+
+        // Pause to avoid Discord rate limits.
+        // A slightly longer pause since we might send multiple messages in a row.
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+
+      // If we posted anything, update the last post link to the newest item's link
+      if (itemsToPost.length > 0) {
+        saveLastPost(name, newestItem.link);
+      }
+
     } catch (error) {
       console.error(`[ERREUR] Flux "${name}" :`, error.message);
     }

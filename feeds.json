@@ -8,19 +8,19 @@
     "webhookKey": "actualites"
   },
   "Le Cyberspace de Jérôme Darmont": {
-    "url": "http://darmont.free.fr/?feed=rss2",
+    "url": "https://darmont.free.fr/?feed=rss2",
     "webhookKey": "actualites"
   },
-  "Geek Powa": {
-    "url": "http://www.geek-powa.fr/feed/",
+  "Geek Powa - Blog": {
+    "url": "https://www.geek-powa.fr/feed/",
     "webhookKey": "actualites"
   },
   "Radio Rôliste": {
-    "url": "http://www.radio-roliste.net/?feed=rss2",
+    "url": "https://www.radio-roliste.net/?feed=rss2",
     "webhookKey": "actualites"
   },
   "PTGPTB": {
-    "url": "http://ptgptb.fr/rss.xml",
+    "url": "https://ptgptb.fr/rss.xml",
     "webhookKey": "actualites"
   },
   "Jeuxderole.com": {
@@ -28,7 +28,7 @@
     "webhookKey": "actualites"
   },
   "Hugin & Munin": {
-    "url": "http://hu-mu.blogspot.com/feeds/posts/default",
+    "url": "https://hu-mu.blogspot.com/feeds/posts/default",
     "webhookKey": "actualites"
   },
   "Guerre & plomb JDR": {
@@ -39,7 +39,7 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCbM4Z7OzdBTip4fvMHvwG6A",
     "webhookKey": "podcasts"
   },
-  "Geek Powa": {
+  "Geek Powa - YouTube": {
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJGoap50LL07tseuuCC6HAA",
     "webhookKey": "podcasts"
   },
@@ -56,14 +56,14 @@
     "webhookKey": "podcasts"
   },
   "SciFi-Universe critiques": {
-    "url": "http://feeds.feedburner.com/SciFi-Universe-Critiques",
+    "url": "https://feeds.feedburner.com/SciFi-Universe-Critiques",
     "webhookKey": "actualites"
   },
   "SciFi-Universe actualités": {
-    "url": "http://feeds.feedburner.com/SciFi-Universe",
+    "url": "https://feeds.feedburner.com/SciFi-Universe",
     "webhookKey": "actualites"
-  }
-    "News": {
+  },
+  "News": {
     "url": "https://github.com/Gabryel666.atom",
     "webhookKey": "outils"
   }
