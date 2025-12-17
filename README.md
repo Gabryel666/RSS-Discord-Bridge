@@ -114,3 +114,11 @@ Edit `.github/workflows/rss-check.yml`:
 ## 📄 License
 
 MIT © [Gabryel666] - Free for use and modification
+
+graph TD
+    A[Dossier en dépassement LCS] --> B{Calcul Actualisation}
+    B --> C[Simulation Excel]
+    C --> D{Validation Responsable}
+    D -- Accord --> E[Mise à jour Fiche Client]
+    D -- Refus/Modif --> B
+
