@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS-Discord Bridge - Configuration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-i18n="title">RSS-Discord Bridge - Configuration</h1>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </header>
+
+        <nav class="tab-buttons">
+            <button class="tab-btn active" data-tab="tab-doc" data-i18n="tabDoc">📚 Documentation</button>
+            <button class="tab-btn" data-tab="tab-config" data-i18n="tabConfig">⚙️ Configuration</button>
+        </nav>
+
+        <!-- DOCUMENTATION SECTION -->
+        <div id="tab-doc" class="section active">
+
+            <!-- French Documentation -->
+            <div id="doc-fr" class="doc-content">
+                <h2>Guide d'Installation Simple</h2>
+
+                <div class="note">
+                    <strong>Prérequis :</strong> Vous devez avoir un compte GitHub et un serveur Discord où vous êtes administrateur.
+                </div>
+
+                <h3>1. Créer votre copie (Fork)</h3>
+                <p>Pour utiliser ce robot, vous devez d'abord créer votre propre copie du projet.</p>
+                <ul>
+                    <li>Allez en haut à droite de cette page.</li>
+                    <li>Cliquez sur le bouton <strong>Fork</strong>.</li>
+                    <li>Validez la création. Vous êtes maintenant sur <em>votre</em> version du projet.</li>
+                </ul>
+
+                <h3>2. Configurer Discord</h3>
+                <p>Le robot a besoin d'une "adresse" pour savoir où poster les messages sur votre Discord.</p>
+                <ul>
+                    <li>Sur Discord, allez dans les <strong>Paramètres du salon</strong> > <strong>Intégrations</strong> > <strong>Webhooks</strong>.</li>
+                    <li>Cliquez sur <strong>Nouveau Webhook</strong>.</li>
+                    <li>Copiez l'URL du Webhook (elle commence par <code>https://discord.com/api/webhooks/...</code>).</li>
+                </ul>
+
+                <h3>3. Activer le Robot (Secrets)</h3>
+                <p>Vous devez donner l'adresse du Webhook au robot de manière sécurisée.</p>
+                <ul>
+                    <li>Sur votre dépôt GitHub, allez dans l'onglet <strong>Settings</strong> (Paramètres).</li>
+                    <li>Dans le menu de gauche : <strong>Secrets and variables</strong> > <strong>Actions</strong>.</li>
+                    <li>Cliquez sur <strong>New repository secret</strong>.</li>
+                    <li><strong>Name</strong> : <code>DISCORD_WEBHOOKS</code> (écrivez-le exactement comme ça).</li>
+                    <li><strong>Secret</strong> : Collez le code ci-dessous en remplaçant l'URL par la vôtre :</li>
+                </ul>
+                <pre><code>{
+  "actualites": "https://discord.com/api/webhooks/VOTRE_URL_ICI"
+}</code></pre>
+
+                <h3>4. Activer ce Site (GitHub Pages)</h3>
+                <p>Pour utiliser l'outil de configuration ci-contre :</p>
+                <ul>
+                    <li>Allez dans <strong>Settings</strong> > <strong>Pages</strong>.</li>
+                    <li>Dans "Build and deployment", sous "Branch", choisissez <strong>main</strong> et le dossier <strong>/docs</strong>.</li>
+                    <li>Cliquez sur <strong>Save</strong>.</li>
+                    <li>Attendez quelques minutes, et rafraîchissez cette page.</li>
+                </ul>
+
+                <h3>5. Obtenir votre Clé d'accès (Token)</h3>
+                <p>Pour utiliser l'onglet "Configuration", vous avez besoin d'une clé spéciale (Token) pour prouver que c'est bien vous.</p>
+                <ul>
+                    <li>Cliquez sur votre avatar GitHub (en haut à droite) > <strong>Settings</strong>.</li>
+                    <li>Tout en bas à gauche : <strong>Developer settings</strong> > <strong>Personal access tokens</strong> > <strong>Tokens (classic)</strong>.</li>
+                    <li>Cliquez sur <strong>Generate new token (classic)</strong>.</li>
+                    <li>Donnez un nom (ex: "RSS Config").</li>
+                    <li>Cochez la case <strong>repo</strong> (ou <code>public_repo</code> si votre projet est public).</li>
+                    <li>Cliquez sur <strong>Generate token</strong> et copiez le code qui commence par <code>ghp_...</code>.</li>
+                    <li>Collez ce code dans l'onglet "Configuration".</li>
+                </ul>
+            </div>
+
+            <!-- English Documentation -->
+            <div id="doc-en" class="doc-content hidden">
+                <h2>Simple Setup Guide</h2>
+
+                <div class="note">
+                    <strong>Prerequisites:</strong> You need a GitHub account and a Discord server where you are an admin.
+                </div>
+
+                <h3>1. Create your copy (Fork)</h3>
+                <p>To use this bot, you first need to create your own copy of the project.</p>
+                <ul>
+                    <li>Go to the top right of this page.</li>
+                    <li>Click the <strong>Fork</strong> button.</li>
+                    <li>Confirm. You are now on <em>your</em> version of the project.</li>
+                </ul>
+
+                <h3>2. Setup Discord</h3>
+                <p>The bot needs an "address" to know where to post messages on your Discord.</p>
+                <ul>
+                    <li>On Discord, go to <strong>Channel Settings</strong> > <strong>Integrations</strong> > <strong>Webhooks</strong>.</li>
+                    <li>Click <strong>New Webhook</strong>.</li>
+                    <li>Copy the Webhook URL (starts with <code>https://discord.com/api/webhooks/...</code>).</li>
+                </ul>
+
+                <h3>3. Enable the Bot (Secrets)</h3>
+                <p>You need to give the Webhook address to the bot securely.</p>
+                <ul>
+                    <li>On your GitHub repo, go to the <strong>Settings</strong> tab.</li>
+                    <li>Left menu: <strong>Secrets and variables</strong> > <strong>Actions</strong>.</li>
+                    <li>Click <strong>New repository secret</strong>.</li>
+                    <li><strong>Name</strong>: <code>DISCORD_WEBHOOKS</code> (exact spelling).</li>
+                    <li><strong>Secret</strong>: Paste the code below, replacing the URL with yours:</li>
+                </ul>
+                <pre><code>{
+  "news": "https://discord.com/api/webhooks/YOUR_URL_HERE"
+}</code></pre>
+
+                <h3>4. Enable this Site (GitHub Pages)</h3>
+                <p>To use the configuration tool:</p>
+                <ul>
+                    <li>Go to <strong>Settings</strong> > <strong>Pages</strong>.</li>
+                    <li>Under "Build and deployment", select Branch <strong>main</strong> and folder <strong>/docs</strong>.</li>
+                    <li>Click <strong>Save</strong>.</li>
+                    <li>Wait a few minutes, then refresh this page.</li>
+                </ul>
+
+                <h3>5. Get your Access Token (PAT)</h3>
+                <p>To use the "Configurator" tab, you need a special key (Token) to prove it's you.</p>
+                <ul>
+                    <li>Click your GitHub avatar (top right) > <strong>Settings</strong>.</li>
+                    <li>Bottom left: <strong>Developer settings</strong> > <strong>Personal access tokens</strong> > <strong>Tokens (classic)</strong>.</li>
+                    <li>Click <strong>Generate new token (classic)</strong>.</li>
+                    <li>Give it a name (e.g., "RSS Config").</li>
+                    <li>Check the <strong>repo</strong> box (or <code>public_repo</code> if your project is public).</li>
+                    <li>Click <strong>Generate token</strong> and copy the code starting with <code>ghp_...</code>.</li>
+                    <li>Paste this code in the "Configurator" tab.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONFIGURATION SECTION -->
+        <div id="tab-config" class="section">
+
+            <!-- Auth Login -->
+            <div id="auth-section" class="auth-box">
+                <h3 data-i18n="authTitle">Authentification requise</h3>
+                <p data-i18n="authDesc" style="margin-bottom: 15px; color: #b9bbbe;">Pour modifier les flux, vous devez fournir un Token d'accès personnel GitHub (PAT).</p>
+                <input type="password" id="token-input" placeholder="github_pat_...">
+                <button id="btn-connect" class="btn btn-primary" data-i18n="btnConnect">Connexion</button>
+            </div>
+
+            <!-- Main Interface (Hidden by default) -->
+            <div id="config-interface" class="hidden">
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <button id="btn-disconnect" class="btn btn-danger" data-i18n="btnDisconnect">Déconnexion</button>
+                </div>
+
+                <div id="status-msg" class="hidden"></div>
+
+                <div class="card">
+                    <h3 data-i18n="addFeedTitle">Ajouter un flux RSS</h3>
+                    <form id="add-feed-form">
+                        <label data-i18n="feedName">Nom du flux</label>
+                        <input type="text" id="feed-name" required>
+
+                        <label data-i18n="feedUrl">URL du flux RSS</label>
+                        <input type="url" id="feed-url" required>
+
+                        <label data-i18n="webhookKey">Clé Webhook</label>
+                        <input type="text" id="webhook-key" required>
+
+                        <button type="submit" class="btn btn-success" data-i18n="btnAdd">Ajouter</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3 data-i18n="currentFeeds">Flux actuels</h3>
+                    <div id="feed-list">
+                        <!-- Feeds injected here by JS -->
+                        <p data-i18n="loading" style="text-align: center; color: #b9bbbe;">Chargement...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
