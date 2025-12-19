@@ -16,55 +16,61 @@ An automated script that monitors RSS feeds and pushes new articles to Discord c
 
 You can check the release notes by clicking on [Release notes](https://github.com/Gabryel666/RSS-Discord-Bridge/blob/main/release%20notes.md)
 
+## 🚀 Installation & Configuration (The Easy Way)
+
+This project comes with a **built-in configuration website** to help you manage your feeds without editing code.
+
+### 1. Enable the Config Site
+
+After forking this repository (making your own copy):
+
+1.  Go to **Settings** > **Actions** > **General** and select **Allow all actions and reusable workflows**. Click **Save**.
+2.  Go to **Settings** > **Pages**.
+3.  Under "Build and deployment", set **Branch** to `main` and folder to `/docs`. Click **Save**.
+4.  Wait 1-2 minutes. Your configuration site will appear at:
+    `https://YOUR-USERNAME.github.io/RSS-Discord-Bridge/`
+
+**👉 Use this website to follow the setup guide and manage your RSS feeds easily.**
+
+---
+
 ## Key Features
 
-- **Exhaustive History Retrieval**: Retrieves *all* missed articles between checks, not just the latest one.
-- **Smart Desync Protection**: Prevents spam if a feed changes significantly or is new.
+- **Exhaustive History Retrieval**: Retrieves *all* missed articles between checks.
+- **Smart Desync Protection**: Prevents spam if a feed changes significantly.
 - **Multi-Channel Routing**: Send feeds to different Discord channels.
-- **Multi-Feed Tracking**: Monitor unlimited RSS feeds (`feeds.json`).
-- **Duplicate Prevention**: Persistent memory of processed articles (`last_posts.json`).
+- **Multi-Feed Tracking**: Monitor unlimited RSS feeds.
+- **Web Dashboard**: Manage feeds via a friendly UI (`/docs`).
 - **Scheduled Updates**: Configurable check frequency via GitHub Actions.
-- **Clean Formatting**: Optimized Discord message display.
 
-## Quick Start
+## Manual Setup (Advanced)
 
-1. **Clone the repository**:
+If you prefer not to use the web interface, you can configure everything manually:
 
-   ```
-   git clone https://github.com/Gabryel666/RSS-Discord-Bridge.git
-   cd RSS-Discord-Bridge
-   ```
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/Gabryel666/RSS-Discord-Bridge.git
+    cd RSS-Discord-Bridge
+    ```
 
-2. **Configure feeds**:
-    Edit `feeds.json` with channel routing (unique name required)
+2.  **Configure feeds**:
+    Edit `feeds.json`:
+    ```json
+    {
+      "Hugin & Munin": {
+        "url": "https://example.com/feed.rss",
+        "webhookKey": "news"
+      }
+    }
+    ```
 
-   ```
-   {
-     "Hugin & Munin": {
-       "url": "https://example.com/feed.rss",
-       "webhookKey": "news"
-     },
-     "Le Grog": {
-       "url": "https://www.legrog.org/rss",
-       "webhookKey": "gaming"
-     }
-   }
-   ```
-
-3. **Set up Discord webhooks**:
-
-   - Create webhooks for each channel in Discord settings
-
-   - Add them to GitHub Secrets as JSON:
-
-     ```
-     {
-       "news": "https://discord.com/api/webhooks/...",
-       "gaming": "https://discord.com/api/webhooks/..."
-     }
-     ```
-
-   - Secret name: `DISCORD_WEBHOOKS`
+3.  **Set up Discord webhooks**:
+    Add them to GitHub Secrets as `DISCORD_WEBHOOKS`:
+    ```json
+    {
+      "news": "https://discord.com/api/webhooks/..."
+    }
+    ```
 
 ## Technical Overview
 
@@ -75,41 +81,12 @@ sequenceDiagram
     participant RSS as RSS Feeds
     participant Discord
 
-    GA->>Script: Déclenchement programmé
-    Script->>RSS: Requête GET
-    RSS-->>Script: Nouveaux articles
-    Script->>Discord: Envoi ciblé
-    Note right of Script: Route vers le bon salon
-    Script->>GA: Mise à jour last_posts.json
+    GA->>Script: Scheduled Trigger
+    Script->>RSS: GET Request
+    RSS-->>Script: New Items
+    Script->>Discord: Post to Webhook
+    Script->>GA: Update last_posts.json
 ```
-
-## File Structure
-
-```
-.
-├── .github/
-│   └── workflows/
-│       └── rss-check.yml    # Automation config
-├── feeds.json               # Feed list with channel routing
-├── last_posts.json          # Processed articles (auto-generated)
-└── main.js                  # Core processing script
-```
-
-## Customization
-
-### Change Check Frequency
-
-Edit `.github/workflows/rss-check.yml`:
-
-```
-- cron: '*/30 * * * *'  # Every 30 minutes
-```
-
-### Available Intervals:
-
-- `'*/15 * * * *'` - Every 15 minutes
-- `'0 * * * *'` - Hourly
-- `'0 0 * * *'` - Daily
 
 ## 📄 License
 

@@ -12,18 +12,18 @@
         <header>
             <h1 data-i18n="title">RSS-Discord Bridge - Configuration</h1>
             <div class="lang-switch">
-                <button class="lang-btn active" data-lang="fr">FR</button>
-                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn active" data-lang="fr">🇫🇷</button>
+                <button class="lang-btn" data-lang="en">🇬🇧</button>
             </div>
         </header>
 
         <nav class="tab-buttons">
-            <button class="tab-btn active" data-tab="tab-doc" data-i18n="tabDoc">📚 Documentation</button>
-            <button class="tab-btn" data-tab="tab-config" data-i18n="tabConfig">⚙️ Configuration</button>
+            <button class="tab-btn" data-tab="tab-doc" data-i18n="tabDoc">📚 Documentation</button>
+            <button class="tab-btn active" data-tab="tab-config" data-i18n="tabConfig">⚙️ Configuration</button>
         </nav>
 
         <!-- DOCUMENTATION SECTION -->
-        <div id="tab-doc" class="section active">
+        <div id="tab-doc" class="section">
 
             <!-- French Documentation -->
             <div id="doc-fr" class="doc-content">
@@ -75,11 +75,13 @@
                 <p>Pour utiliser l'onglet "Configuration", vous avez besoin d'une clé spéciale (Token) pour prouver que c'est bien vous.</p>
                 <ul>
                     <li>Cliquez sur votre avatar GitHub (en haut à droite) > <strong>Settings</strong>.</li>
-                    <li>Tout en bas à gauche : <strong>Developer settings</strong> > <strong>Personal access tokens</strong> > <strong>Tokens (classic)</strong>.</li>
-                    <li>Cliquez sur <strong>Generate new token (classic)</strong>.</li>
+                    <li>Tout en bas à gauche : <strong>Developer settings</strong> > <strong>Personal access tokens</strong> > <strong>Fine-grained tokens</strong>.</li>
+                    <li>Cliquez sur <strong>Generate new token</strong>.</li>
                     <li>Donnez un nom (ex: "RSS Config").</li>
-                    <li>Cochez la case <strong>repo</strong> (ou <code>public_repo</code> si votre projet est public).</li>
-                    <li>Cliquez sur <strong>Generate token</strong> et copiez le code qui commence par <code>ghp_...</code>.</li>
+                    <li>Sous "Repository access", cochez <strong>Only select repositories</strong> et choisissez votre dépôt (RSS-Discord-Bridge).</li>
+                    <li>Sous "Permissions", cliquez sur <strong>Repository permissions</strong>.</li>
+                    <li>Cherchez <strong>Contents</strong> et changez "Access: No access" en <strong>Access: Read and Write</strong>.</li>
+                    <li>Cliquez sur <strong>Generate token</strong> et copiez le code qui commence par <code>github_pat_...</code>.</li>
                     <li>Collez ce code dans l'onglet "Configuration".</li>
                 </ul>
             </div>
@@ -134,18 +136,20 @@
                 <p>To use the "Configurator" tab, you need a special key (Token) to prove it's you.</p>
                 <ul>
                     <li>Click your GitHub avatar (top right) > <strong>Settings</strong>.</li>
-                    <li>Bottom left: <strong>Developer settings</strong> > <strong>Personal access tokens</strong> > <strong>Tokens (classic)</strong>.</li>
-                    <li>Click <strong>Generate new token (classic)</strong>.</li>
+                    <li>Bottom left: <strong>Developer settings</strong> > <strong>Personal access tokens</strong> > <strong>Fine-grained tokens</strong>.</li>
+                    <li>Click <strong>Generate new token</strong>.</li>
                     <li>Give it a name (e.g., "RSS Config").</li>
-                    <li>Check the <strong>repo</strong> box (or <code>public_repo</code> if your project is public).</li>
-                    <li>Click <strong>Generate token</strong> and copy the code starting with <code>ghp_...</code>.</li>
+                    <li>Under "Repository access", check <strong>Only select repositories</strong> and select your repository (RSS-Discord-Bridge).</li>
+                    <li>Under "Permissions", click on <strong>Repository permissions</strong>.</li>
+                    <li>Find <strong>Contents</strong> and change "Access: No access" to <strong>Access: Read and Write</strong>.</li>
+                    <li>Click <strong>Generate token</strong> and copy the code starting with <code>github_pat_...</code>.</li>
                     <li>Paste this code in the "Configurator" tab.</li>
                 </ul>
             </div>
         </div>
 
         <!-- CONFIGURATION SECTION -->
-        <div id="tab-config" class="section">
+        <div id="tab-config" class="section active">
 
             <!-- Auth Login -->
             <div id="auth-section" class="auth-box">
