@@ -1,4 +1,4 @@
-# RSS-Discord-Bridge
+# RSS-Discord-Bridge.
 
 <p align="center">
   <a href="https://github.com/Gabryel666/RSS-Discord-Bridge/releases" target="_blank">
