@@ -1,0 +1,130 @@
+/* sra2-cyberpunk.css */
+
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* variables */
+:root {
+  --cyber-red: #ff003c;
+  --cyber-yellow: #fce100;
+  --cyber-blue: rgba(0, 240, 255, 0.7);
+  --cyber-dark: rgba(20, 20, 25, 0.85); /* Slightly transparent for HUD feel */
+  --cyber-darker: rgba(10, 10, 15, 0.95);
+  --cyber-text: #ffffff;
+  --cyber-text-dim: #cccccc;
+
+  --font-cyber: 'Rajdhani', sans-serif;
+  --font-cyber-mono: 'Share Tech Mono', monospace;
+}
+
+/* Base Body Application */
+body, .app, .window-app {
+  font-family: var(--font-cyber);
+}
+
+/* Foundry Interface Overrides */
+
+/* Application Windows */
+.window-app {
+  background: var(--cyber-dark) !important;
+  color: var(--cyber-text);
+  border: 2px solid var(--cyber-red) !important;
+  border-radius: 0 !important; /* Remove standard rounding */
+  box-shadow: 0 0 15px rgba(255, 0, 60, 0.4), inset 0 0 10px rgba(255, 0, 60, 0.2);
+  /* Cyberpunk cut corner effect (top-left and bottom-right) */
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+
+/* Remove internal borders often found in Foundry */
+.window-app .window-content {
+  background: transparent !important; /* Rely on .window-app background */
+  color: var(--cyber-text);
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Window Headers (Title bars) */
+.window-app .window-header {
+  background: var(--cyber-red) !important;
+  color: #000 !important;
+  border: none !important;
+  border-bottom: 2px solid var(--cyber-yellow) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-cyber-mono);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Header buttons (close, popout, etc) */
+.window-app .window-header .window-title {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+.window-app .window-header a.close,
+.window-app .window-header a.popout {
+  color: #000 !important;
+  transition: 0.2s;
+}
+
+.window-app .window-header a.close:hover,
+.window-app .window-header a.popout:hover {
+  color: var(--cyber-yellow) !important;
+  text-shadow: 0 0 5px var(--cyber-yellow);
+}
+
+/* Sidebar and general panels */
+#ui-right #sidebar {
+  background: var(--cyber-darker);
+  border-left: 2px solid var(--cyber-red);
+}
+
+#sidebar-tabs {
+  border-bottom: 2px solid var(--cyber-red);
+  background: var(--cyber-dark);
+}
+
+#sidebar-tabs > .item {
+  color: var(--cyber-red);
+}
+
+#sidebar-tabs > .item.active {
+  color: var(--cyber-yellow);
+  text-shadow: 0 0 5px var(--cyber-yellow);
+  border-bottom: 2px solid var(--cyber-yellow);
+}
+
+/* Chat Messages */
+.chat-message {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid var(--cyber-red);
+  border-left: 4px solid var(--cyber-yellow);
+  color: var(--cyber-text);
+  font-family: var(--font-cyber);
+}
+
+/* Inputs and Buttons */
+input[type="text"], input[type="number"], select, textarea {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--cyber-blue);
+  color: var(--cyber-yellow);
+  font-family: var(--font-cyber-mono);
+  border-radius: 0 !important;
+}
+
+button {
+  background: rgba(0,0,0,0.5) !important;
+  border: 1px solid var(--cyber-red) !important;
+  color: var(--cyber-red) !important;
+  font-family: var(--font-cyber-mono);
+  transition: all 0.2s;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+}
+
+button:hover {
+  background: var(--cyber-red) !important;
+  color: #000 !important;
+  box-shadow: 0 0 8px var(--cyber-red);
+}
