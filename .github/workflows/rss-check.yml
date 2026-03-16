@@ -1,5 +1,8 @@
 name: RSS to Discord
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   schedule:
     - cron: '*/30 * * * *'
@@ -11,8 +14,6 @@ jobs:
     permissions:  # <-- Nouvelle section cruciale !
       contents: write  # Donne l'accès en écriture
 
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
     - uses: actions/checkout@v4
       with:
