@@ -54,7 +54,8 @@ function saveLastPosts(data) {
 
 function formatDiscordPost(feedName, item) {
   // Sécurisation basique du contenu (on pourrait aller plus loin avec du filtrage HTML)
-  const title = item.title || 'Sans titre';
+  // On échappe les crochets car Discord perd parfois la syntaxe des liens [titre](url)
+  const title = (item.title || 'Sans titre').replace(/\[/g, '\\[').replace(/\]/g, '\\]');
   const link = item.link || '';
   return `\u200b\n🔔 **${feedName}**\n# [${title}](${link})`;
 }
@@ -62,7 +63,7 @@ function formatDiscordPost(feedName, item) {
 // --- Cœur du script ---
 
 async function checkFeeds() {
-  const parser = new RSSParser();
+  const parser = new RSSParser({ timeout: 10000 }); // Fix 2 : Timeout pour bloquer les serveurs capricieux
   const lastPosts = loadLastPosts();
   // On ne charge pas tout en mémoire pour la sauvegarde, on mettra à jour l'objet lastPosts au fur et à mesure.
 
@@ -140,11 +141,13 @@ async function checkFeeds() {
           lastPosts[name] = item.link;
           saveLastPosts(lastPosts);
 
-          // Délai respectueux pour Discord (Rate Limit)
-          await new Promise(resolve => setTimeout(resolve, 1000));
         } catch (err) {
           log('ERROR', `Échec d'envoi Discord pour "${item.title}" : ${err.message}`);
-          // On continue quand même pour les autres articles
+          // Fix 1 : En cas d'erreur rate-limit, on arrête ce flux, les prochains articles échoueront aussi sinon.
+          break; 
+        } finally {
+          // Fix 3 : Délai respectueux pour Discord (Rate Limit) même en cas d'erreur
+          await new Promise(resolve => setTimeout(resolve, 1000));
         }
       }
 

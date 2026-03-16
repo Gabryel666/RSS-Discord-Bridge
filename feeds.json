@@ -11,7 +11,7 @@
     "url": "http://darmont.free.fr/?feed=rss2",
     "webhookKey": "actualites"
   },
-  "Geek Powa Web": {
+  "Geek Powa Actus": {
     "url": "http://www.geek-powa.fr/feed/",
     "webhookKey": "actualites"
   },
@@ -23,10 +23,6 @@
     "url": "http://ptgptb.fr/rss.xml",
     "webhookKey": "actualites"
   },
-  "Jeuxderole.com": {
-    "url": "https://www.jeuxderole.com/feed/",
-    "webhookKey": "actualites"
-  },
   "Hugin & Munin": {
     "url": "http://hu-mu.blogspot.com/feeds/posts/default",
     "webhookKey": "actualites"
@@ -35,11 +31,7 @@
     "url": "https://guerre-plomb.fr/feed/",
     "webhookKey": "actualites"
   },
-  "Roliste TV": {
-    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCbM4Z7OzdBTip4fvMHvwG6A",
-    "webhookKey": "podcasts"
-  },
-  "Geek Powa YouTube": {
+  "Geek Powa Podcasts": {
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJGoap50LL07tseuuCC6HAA",
     "webhookKey": "podcasts"
   },
@@ -59,12 +51,72 @@
     "url": "http://feeds.feedburner.com/SciFi-Universe-Critiques",
     "webhookKey": "actualites"
   },
-  "SciFi-Universe actualités": {
-    "url": "http://feeds.feedburner.com/SciFi-Universe",
+  "RSS-Discord-Bridge": {
+    "url": "https://github.com/Gabryel666/RSS-Discord-Bridge/releases.atom",
+    "webhookKey": "outils"
+  },
+  "Google-Drive-Folder-duplicator": {
+    "url": "https://github.com/Gabryel666/Google-Drive-Folder-duplicator/releases.atom",
+    "webhookKey": "outils"
+  },
+  "Système Agone": {
+    "url": "https://github.com/Dellatosa/Agone/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Wallow Wide": {
+    "url": "https://github.com/Dellatosa/wallow-wide/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Module expanse-ui": {
+    "url": "https://github.com/Dellatosa/expanse-ui/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Dune 2D20 Dellatosa": {
+    "url": "https://github.com/Dellatosa/dune2d20/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Vampire 5ed": {
+    "url": "https://github.com/WoD5E-Developers/wod5e/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Legends of the Five Rings": {
+    "url": "https://gitlab.com/team-l5r4/l5r4/-/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Shadowrun 6": {
+    "url": "https://github.com/yjeroen/foundry-shadowrun6-eden/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Pénombre": {
+    "url": "https://github.com/AEther-Labs-Editions/foundry-penombre/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Module Campaign Codex": {
+    "url": "https://github.com/xthesaintx/cc13/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Module SRA2 Enhancements": {
+    "url": "https://github.com/Gabryel666/SRA2-Enhancements/releases.atom",
+    "webhookKey": "foundry"
+  },
+  "Système Shadowrun Anarchy II": {
+    "url": "https://github.com/VincentVk9373/sra2/releases.atom",
+    "webhookKey": "foundry"
+  }, 
+  "Shadowrun FR": {
+    "url": "https://shadowrun-jdr.fr/feed/",
     "webhookKey": "actualites"
   },
-  "News": {
-    "url": "https://github.com/Gabryel666.atom",
-    "webhookKey": "outils"
+  "Carter": {
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCI2-0NWbGsKeKyferFiLP1A",
+    "webhookKey": "foundry"
+  },
+  "Renaud Decode": {
+    "url": "https://www.youtube.com/feeds/videos.xml?playlist_id=PLlPLi1cNWVtWs0spMG6YbDQQ4IDx-4OgI",
+    "webhookKey": "ai"
+  },
+  "Custom System Builder": {
+    "url": "https://gitlab.com/custom-system-builder/custom-system-builder/-/releases.atom",
+    "webhookKey": "foundry"
   }
 }
